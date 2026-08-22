@@ -271,36 +271,6 @@ The website is designed to adapt naturally to different screen sizes without unn
 
 <div align="center">
 
-## 📂 PROJECT STRUCTURE
-
-</div>
-
-```text
-portfolio/
-│
-├── index.html
-│
-├── style.css
-├── responsive.css
-├── script.js
-│
-├── images/
-│   └── projects/
-│       ├── grace-enterprises.png
-│       ├── amj-enterprises.png
-│       └── adithya-beach-villa.png
-│
-├── assets/
-│
-└── README.md
-```
-
-> The exact structure may vary depending on the current project version.
-
----
-
-<div align="center">
-
 ## ⚙️ GETTING STARTED
 
 </div>
