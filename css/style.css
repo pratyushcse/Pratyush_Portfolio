@@ -25201,3 +25201,234 @@ and (max-height: 850px) {
     }
 }
 
+
+
+
+
+
+
+
+/* =========================================================
+   SMALL LAPTOP SKILLS FIX
+   1100px - 1280px
+   KEEP LEFT + ORBIT + DETAILS IN ONE ROW
+========================================================= */
+
+@media (min-width: 1100px) and (max-width: 1280px) {
+
+    #skills.skills-section {
+        padding: 10px 0 12px !important;
+    }
+
+    /* KEEP 3 COLUMNS */
+    #skills .skills-container {
+        width: calc(100% - 36px) !important;
+
+        grid-template-columns:
+            minmax(190px, 0.72fr)
+            minmax(450px, 1.45fr)
+            minmax(225px, 0.78fr) !important;
+
+        gap: 18px !important;
+
+        align-items: center !important;
+    }
+
+
+    /* LEFT SIDE */
+    #skills .skills-heading {
+        font-size: clamp(1.8rem, 2.6vw, 2.5rem) !important;
+    }
+
+    #skills .skills-description {
+        font-size: 0.76rem !important;
+        line-height: 1.55 !important;
+        margin-top: 12px !important;
+    }
+
+    #skills .skills-stats {
+        margin-top: 16px !important;
+        gap: 8px !important;
+    }
+
+    #skills .skills-stat-icon {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+
+    /* ==============================
+       ORBIT
+    ============================== */
+
+    #skills .skills-orbit {
+        --orbit-size: min(500px, calc(100vh - 165px));
+        --orbit-radius: calc((var(--orbit-size) / 2) - 27px);
+
+        width: var(--orbit-size) !important;
+        height: var(--orbit-size) !important;
+
+        max-width: var(--orbit-size) !important;
+        max-height: var(--orbit-size) !important;
+
+        margin-inline: auto !important;
+
+        overflow: visible !important;
+    }
+
+
+    #skills .skills-orbit::before {
+        width: 70% !important;
+        height: 70% !important;
+    }
+
+
+    /* ORBIT RINGS */
+
+    #skills .orbit-ring-1,
+    #skills .tracker-1 {
+        width: 40% !important;
+        height: 40% !important;
+    }
+
+    #skills .orbit-ring-2,
+    #skills .tracker-2 {
+        width: 60% !important;
+        height: 60% !important;
+    }
+
+    #skills .orbit-ring-3,
+    #skills .tracker-3 {
+        width: 80% !important;
+        height: 80% !important;
+    }
+
+    #skills .orbit-ring-4,
+    #skills .tracker-4 {
+        width: 92% !important;
+        height: 92% !important;
+    }
+
+
+    /* CENTER CIRCLE */
+
+    #skills .skills-core {
+        width: 32% !important;
+        height: 32% !important;
+    }
+
+    #skills .skills-core strong {
+        font-size: 1.35rem !important;
+    }
+
+
+    /* TECHNOLOGY ICON POSITIONS */
+
+    #skills .tech-node {
+        position: absolute !important;
+
+        top: 50% !important;
+        left: 50% !important;
+
+        right: auto !important;
+        bottom: auto !important;
+
+        width: 72px !important;
+        min-width: 72px !important;
+
+        transform:
+            translate(-50%, -50%)
+            rotate(var(--angle))
+            translateX(var(--orbit-radius))
+            rotate(calc(var(--angle) * -1)) !important;
+    }
+
+
+    #skills .tech-node:hover {
+        transform:
+            translate(-50%, -50%)
+            rotate(var(--angle))
+            translateX(var(--orbit-radius))
+            rotate(calc(var(--angle) * -1))
+            scale(1.05) !important;
+    }
+
+
+    #skills .tech-icon {
+        width: 52px !important;
+        height: 52px !important;
+    }
+
+    #skills .tech-icon img {
+        width: 40px !important;
+        height: 40px !important;
+
+        max-width: 40px !important;
+        max-height: 40px !important;
+    }
+
+    #skills .tech-node > span {
+        font-size: 0.64rem !important;
+        margin-top: 5px !important;
+    }
+
+
+    /* ==============================
+       RIGHT DETAILS CARD
+    ============================== */
+
+    #skills .tech-details {
+
+        /* IMPORTANT:
+           cancels your old grid-column: 1 / -1
+        */
+        grid-column: auto !important;
+
+        width: 100% !important;
+
+        min-width: 0 !important;
+        min-height: 0 !important;
+
+        max-height: calc(100vh - 145px) !important;
+
+        margin: 0 !important;
+
+        padding: 18px 18px !important;
+
+        border-radius: 18px !important;
+    }
+
+    #skills .detail-main-icon {
+        width: 65px !important;
+        height: 65px !important;
+        margin-bottom: 12px !important;
+    }
+
+    #skills .tech-details h3 {
+        font-size: 1.3rem !important;
+        margin-top: 8px !important;
+    }
+
+    #skills .detail-category {
+        font-size: 0.7rem !important;
+    }
+
+    #skills .detail-divider {
+        margin: 12px 0 !important;
+    }
+
+    #skills #detailDescription {
+        font-size: 0.74rem !important;
+        line-height: 1.5 !important;
+    }
+
+    #skills .proficiency {
+        margin-top: 15px !important;
+    }
+
+    #skills .detail-features {
+        margin-top: 14px !important;
+        gap: 7px !important;
+        font-size: 0.7rem !important;
+    }
+}
