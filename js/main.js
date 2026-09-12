@@ -3178,3 +3178,319 @@ if (contactForm) {
         }
     });
 }
+/* =========================================================
+   CLIENT NETWORK — PERFECT RESPONSIVE CONNECTION LINES
+   Lines automatically touch the glowing dots
+========================================================= */
+
+(function () {
+
+    function updateClientNetworkLines() {
+
+        const network = document.querySelector(
+            "#testimonials .client-network"
+        );
+
+        const hub = document.querySelector(
+            "#testimonials .client-hub"
+        );
+
+        if (!network || !hub) return;
+
+
+        const connections = [
+            {
+                line: ".line-1",
+                target: ".client-node-1 .node-pulse"
+            },
+            {
+                line: ".line-2",
+                target: ".client-node-2 .node-pulse"
+            },
+            {
+                line: ".line-3",
+                target: ".client-node-3 .node-pulse"
+            },
+            {
+                line: ".line-4",
+                target: ".client-node-4 .node-pulse"
+            }
+        ];
+
+
+        const networkRect =
+            network.getBoundingClientRect();
+
+        const hubRect =
+            hub.getBoundingClientRect();
+
+
+        /* Exact centre of PRATYUSH hub */
+
+        const startX =
+            hubRect.left
+            - networkRect.left
+            + hubRect.width / 2;
+
+        const startY =
+            hubRect.top
+            - networkRect.top
+            + hubRect.height / 2;
+
+
+        connections.forEach(connection => {
+
+            const line =
+                network.querySelector(connection.line);
+
+            const target =
+                network.querySelector(connection.target);
+
+            if (!line || !target) return;
+
+
+            /*
+             * If nodes are hidden on mobile,
+             * hide connection lines as well.
+             */
+
+            const node =
+                target.closest(".client-node");
+
+            if (
+                !node ||
+                getComputedStyle(node).display === "none"
+            ) {
+
+                line.style.display = "none";
+                return;
+            }
+
+            line.style.display = "block";
+
+
+            const targetRect =
+                target.getBoundingClientRect();
+
+
+            /*
+             * Exact centre of glowing purple dot
+             */
+
+            const endX =
+                targetRect.left
+                - networkRect.left
+                + targetRect.width / 2;
+
+            const endY =
+                targetRect.top
+                - networkRect.top
+                + targetRect.height / 2;
+
+
+            const deltaX =
+                endX - startX;
+
+            const deltaY =
+                endY - startY;
+
+
+            const distance =
+                Math.sqrt(
+                    deltaX * deltaX +
+                    deltaY * deltaY
+                );
+
+
+            const angle =
+                Math.atan2(
+                    deltaY,
+                    deltaX
+                ) * 180 / Math.PI;
+
+
+            /*
+             * IMPORTANT:
+             * !important is used because your
+             * laptop CSS already contains
+             * !important positioning rules.
+             */
+
+            line.style.setProperty(
+                "left",
+                `${startX}px`,
+                "important"
+            );
+
+            line.style.setProperty(
+                "top",
+                `${startY}px`,
+                "important"
+            );
+
+            line.style.setProperty(
+                "width",
+                `${distance}px`,
+                "important"
+            );
+
+            line.style.setProperty(
+                "transform",
+                `rotate(${angle}deg)`,
+                "important"
+            );
+
+        });
+
+
+        /* =============================================
+           LINE 05 — HUB TO STAGE VISION CARD
+        ============================================= */
+
+        const line5 =
+            network.querySelector(".line-5");
+
+        const featuredCard =
+            network.querySelector(
+                ".client-card-featured"
+            );
+
+
+        if (line5 && featuredCard) {
+
+            const cardRect =
+                featuredCard.getBoundingClientRect();
+
+
+            /*
+             * Connect to exact top-centre
+             * of Stage Vision card
+             */
+
+            const endX =
+                cardRect.left
+                - networkRect.left
+                + cardRect.width / 2;
+
+            const endY =
+                cardRect.top
+                - networkRect.top;
+
+
+            const deltaX =
+                endX - startX;
+
+            const deltaY =
+                endY - startY;
+
+
+            const distance =
+                Math.sqrt(
+                    deltaX * deltaX +
+                    deltaY * deltaY
+                );
+
+
+            const angle =
+                Math.atan2(
+                    deltaY,
+                    deltaX
+                ) * 180 / Math.PI;
+
+
+            line5.style.setProperty(
+                "left",
+                `${startX}px`,
+                "important"
+            );
+
+            line5.style.setProperty(
+                "top",
+                `${startY}px`,
+                "important"
+            );
+
+            line5.style.setProperty(
+                "width",
+                `${distance}px`,
+                "important"
+            );
+
+            line5.style.setProperty(
+                "transform",
+                `rotate(${angle}deg)`,
+                "important"
+            );
+        }
+
+    }
+
+
+    /* First calculation */
+
+    window.addEventListener(
+        "load",
+        updateClientNetworkLines
+    );
+
+
+    /* Recalculate whenever screen changes */
+
+    window.addEventListener(
+        "resize",
+        updateClientNetworkLines
+    );
+
+
+    /* Orientation change */
+
+    window.addEventListener(
+        "orientationchange",
+        updateClientNetworkLines
+    );
+
+
+    /* Recalculate after fonts load */
+
+    if (document.fonts) {
+
+        document.fonts.ready.then(
+            updateClientNetworkLines
+        );
+
+    }
+
+
+    /* Watch layout-size changes */
+
+    const network =
+        document.querySelector(
+            "#testimonials .client-network"
+        );
+
+    if (
+        network &&
+        "ResizeObserver" in window
+    ) {
+
+        const observer =
+            new ResizeObserver(
+                updateClientNetworkLines
+            );
+
+        observer.observe(network);
+
+    }
+
+
+    /*
+     * Calculate once more after the page
+     * has completely settled.
+     */
+
+    setTimeout(
+        updateClientNetworkLines,
+        300
+    );
+
+})();
